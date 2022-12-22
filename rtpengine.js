@@ -164,7 +164,8 @@ app.post('/get/:action', async function (req, res) {
                 }
                 return;
             }
-            case 'pcap': {
+            case 'pcap':
+            case 'pcap;download': {
                 // check cache for pcap on this host
                 let data = req.body;
                 if (debugActive) {
@@ -215,7 +216,7 @@ app.post('/get/:action', async function (req, res) {
                 return;
             }
             default: {
-                console.log('404 method not allowed.');
+                console.log('405 method not allowed.');
                 res.sendStatus(405);
                 return;
             }
